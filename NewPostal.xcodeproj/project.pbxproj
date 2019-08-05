@@ -1,0 +1,484 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04272E4A22F7C50A0076A949 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04272E4922F7C50A0076A949 /* AppDelegate.m */; };
+		04272E4D22F7C50A0076A949 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04272E4C22F7C50A0076A949 /* ViewController.m */; };
+		04272E5022F7C50A0076A949 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04272E4E22F7C50A0076A949 /* Main.storyboard */; };
+		04272E5322F7C50A0076A949 /* NewPostal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04272E5122F7C50A0076A949 /* NewPostal.xcdatamodeld */; };
+		04272E5522F7C50B0076A949 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04272E5422F7C50B0076A949 /* Assets.xcassets */; };
+		04272E5822F7C50B0076A949 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04272E5622F7C50B0076A949 /* LaunchScreen.storyboard */; };
+		04272E5B22F7C50B0076A949 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04272E5A22F7C50B0076A949 /* main.m */; };
+		04272E6522F7C50B0076A949 /* NewPostalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04272E6422F7C50B0076A949 /* NewPostalTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		04272E6122F7C50B0076A949 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04272E3D22F7C50A0076A949 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04272E4422F7C50A0076A949;
+			remoteInfo = NewPostal;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		04272E4522F7C50A0076A949 /* NewPostal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewPostal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04272E4822F7C50A0076A949 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		04272E4922F7C50A0076A949 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		04272E4B22F7C50A0076A949 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		04272E4C22F7C50A0076A949 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		04272E4F22F7C50A0076A949 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		04272E5222F7C50A0076A949 /* NewPostal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NewPostal.xcdatamodel; sourceTree = "<group>"; };
+		04272E5422F7C50B0076A949 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		04272E5722F7C50B0076A949 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		04272E5922F7C50B0076A949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04272E5A22F7C50B0076A949 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		04272E6022F7C50B0076A949 /* NewPostalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewPostalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04272E6422F7C50B0076A949 /* NewPostalTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewPostalTests.m; sourceTree = "<group>"; };
+		04272E6622F7C50B0076A949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		04272E4222F7C50A0076A949 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04272E5D22F7C50B0076A949 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04272E3C22F7C50A0076A949 = {
+			isa = PBXGroup;
+			children = (
+				04272E4722F7C50A0076A949 /* NewPostal */,
+				04272E6322F7C50B0076A949 /* NewPostalTests */,
+				04272E4622F7C50A0076A949 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		04272E4622F7C50A0076A949 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				04272E4522F7C50A0076A949 /* NewPostal.app */,
+				04272E6022F7C50B0076A949 /* NewPostalTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		04272E4722F7C50A0076A949 /* NewPostal */ = {
+			isa = PBXGroup;
+			children = (
+				04272E4822F7C50A0076A949 /* AppDelegate.h */,
+				04272E4922F7C50A0076A949 /* AppDelegate.m */,
+				04272E4B22F7C50A0076A949 /* ViewController.h */,
+				04272E4C22F7C50A0076A949 /* ViewController.m */,
+				04272E4E22F7C50A0076A949 /* Main.storyboard */,
+				04272E5422F7C50B0076A949 /* Assets.xcassets */,
+				04272E5622F7C50B0076A949 /* LaunchScreen.storyboard */,
+				04272E5922F7C50B0076A949 /* Info.plist */,
+				04272E5A22F7C50B0076A949 /* main.m */,
+				04272E5122F7C50A0076A949 /* NewPostal.xcdatamodeld */,
+			);
+			path = NewPostal;
+			sourceTree = "<group>";
+		};
+		04272E6322F7C50B0076A949 /* NewPostalTests */ = {
+			isa = PBXGroup;
+			children = (
+				04272E6422F7C50B0076A949 /* NewPostalTests.m */,
+				04272E6622F7C50B0076A949 /* Info.plist */,
+			);
+			path = NewPostalTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		04272E4422F7C50A0076A949 /* NewPostal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04272E6922F7C50B0076A949 /* Build configuration list for PBXNativeTarget "NewPostal" */;
+			buildPhases = (
+				04272E4122F7C50A0076A949 /* Sources */,
+				04272E4222F7C50A0076A949 /* Frameworks */,
+				04272E4322F7C50A0076A949 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NewPostal;
+			productName = NewPostal;
+			productReference = 04272E4522F7C50A0076A949 /* NewPostal.app */;
+			productType = "com.apple.product-type.application";
+		};
+		04272E5F22F7C50B0076A949 /* NewPostalTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04272E6C22F7C50B0076A949 /* Build configuration list for PBXNativeTarget "NewPostalTests" */;
+			buildPhases = (
+				04272E5C22F7C50B0076A949 /* Sources */,
+				04272E5D22F7C50B0076A949 /* Frameworks */,
+				04272E5E22F7C50B0076A949 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04272E6222F7C50B0076A949 /* PBXTargetDependency */,
+			);
+			name = NewPostalTests;
+			productName = NewPostalTests;
+			productReference = 04272E6022F7C50B0076A949 /* NewPostalTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		04272E3D22F7C50A0076A949 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = mac;
+				TargetAttributes = {
+					04272E4422F7C50A0076A949 = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					04272E5F22F7C50B0076A949 = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = 04272E4422F7C50A0076A949;
+					};
+				};
+			};
+			buildConfigurationList = 04272E4022F7C50A0076A949 /* Build configuration list for PBXProject "NewPostal" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 04272E3C22F7C50A0076A949;
+			productRefGroup = 04272E4622F7C50A0076A949 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				04272E4422F7C50A0076A949 /* NewPostal */,
+				04272E5F22F7C50B0076A949 /* NewPostalTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		04272E4322F7C50A0076A949 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04272E5822F7C50B0076A949 /* LaunchScreen.storyboard in Resources */,
+				04272E5522F7C50B0076A949 /* Assets.xcassets in Resources */,
+				04272E5022F7C50A0076A949 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04272E5E22F7C50B0076A949 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		04272E4122F7C50A0076A949 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04272E5322F7C50A0076A949 /* NewPostal.xcdatamodeld in Sources */,
+				04272E4D22F7C50A0076A949 /* ViewController.m in Sources */,
+				04272E5B22F7C50B0076A949 /* main.m in Sources */,
+				04272E4A22F7C50A0076A949 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04272E5C22F7C50B0076A949 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04272E6522F7C50B0076A949 /* NewPostalTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		04272E6222F7C50B0076A949 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04272E4422F7C50A0076A949 /* NewPostal */;
+			targetProxy = 04272E6122F7C50B0076A949 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		04272E4E22F7C50A0076A949 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04272E4F22F7C50A0076A949 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		04272E5622F7C50B0076A949 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04272E5722F7C50B0076A949 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		04272E6722F7C50B0076A949 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		04272E6822F7C50B0076A949 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		04272E6A22F7C50B0076A949 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LUUCB5LGP5;
+				INFOPLIST_FILE = NewPostal/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pakpobox.NewPostal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		04272E6B22F7C50B0076A949 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LUUCB5LGP5;
+				INFOPLIST_FILE = NewPostal/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pakpobox.NewPostal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		04272E6D22F7C50B0076A949 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LUUCB5LGP5;
+				INFOPLIST_FILE = NewPostalTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pakpobox.NewPostalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NewPostal.app/NewPostal";
+			};
+			name = Debug;
+		};
+		04272E6E22F7C50B0076A949 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LUUCB5LGP5;
+				INFOPLIST_FILE = NewPostalTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pakpobox.NewPostalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NewPostal.app/NewPostal";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		04272E4022F7C50A0076A949 /* Build configuration list for PBXProject "NewPostal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04272E6722F7C50B0076A949 /* Debug */,
+				04272E6822F7C50B0076A949 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04272E6922F7C50B0076A949 /* Build configuration list for PBXNativeTarget "NewPostal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04272E6A22F7C50B0076A949 /* Debug */,
+				04272E6B22F7C50B0076A949 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04272E6C22F7C50B0076A949 /* Build configuration list for PBXNativeTarget "NewPostalTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04272E6D22F7C50B0076A949 /* Debug */,
+				04272E6E22F7C50B0076A949 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		04272E5122F7C50A0076A949 /* NewPostal.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				04272E5222F7C50A0076A949 /* NewPostal.xcdatamodel */,
+			);
+			currentVersion = 04272E5222F7C50A0076A949 /* NewPostal.xcdatamodel */;
+			path = NewPostal.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 04272E3D22F7C50A0076A949 /* Project object */;
+}
