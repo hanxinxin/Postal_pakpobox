@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[HisParcelViewController tableView:cellForRowAtIndexPath:]:HisParcelViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "(HisParcelViewController *)self">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

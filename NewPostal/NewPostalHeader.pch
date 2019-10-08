@@ -1,0 +1,155 @@
+//
+//  NewPostal.pch
+//  NewPostal
+//
+//  Created by mac on 2019/8/5.
+//  Copyright © 2019 mac. All rights reserved.
+//
+
+#ifndef NewPostal_pch
+#define NewPostal_pch
+
+
+//#import "AppDelegate.h"
+#import "MBProgressHUD.h"
+#import "AFNetworking.h"
+#import "AFNetWrokingAssistant.h"
+#import "VPKCUIViewExt.h"
+#import "PublicLibrary.h"
+#import "UIViewController+BackButtonHandler.h"
+#import "MJRefresh.h"
+#import "ChangeLanguage.h"
+#import "ClassFrame.h"
+#import "HQTextField.h"
+#import "ClassGather.h"
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+#define MR_Bundle [NSBundle bundleForClass:[self class]]
+#define MR_BundleWith(res) [[MR_Bundle resourcePath] stringByAppendingPathComponent:res]
+
+//#define MR_Bundle [NSBundle mainBundle]
+//#define MR_BundleWith(res) res
+
+
+
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+#define NAVIGATION_HEIGHT (CGRectGetHeight([[UIApplication sharedApplication] statusBarFrame]) + CGRectGetHeight(self.navigationController.navigationBar.frame))
+
+#define kIs_iphone (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define kIs_iPhoneX SCREEN_WIDTH >=375.0f && SCREEN_HEIGHT >=812.0f&& kIs_iphone
+
+/*状态栏高度*/
+#define kStatusBarHeight (CGFloat)kIs_iPhoneX?(44.0):(20.0)
+/*导航栏高度*/
+#define kNavBarHeight 44.0
+/*状态栏和导航栏总高度*/
+#define kNavBarAndStatusBarHeight kIs_iPhoneX?(88.0):(64.0)
+/*TabBar高度*/
+#define kTabBarHeight (CGFloat)kIs_iPhoneX?(49.0 + 34.0):(49.0)
+/*顶部安全区域远离高度*/
+#define kTopBarSafeHeight (CGFloat)kIs_iPhoneX?(44.0):(0)
+/*底部安全区域远离高度*/
+#define kBottomSafeHeight (CGFloat)kIs_iPhoneX?(34.0):(0)
+/*iPhoneX的状态栏高度差值*/
+#define kTopBarDifHeight (CGFloat)kIs_iPhoneX?(24.0):(0)
+/*导航条和Tabbar总高度*/
+
+
+////加载语言的宏
+#define CNS @"zh-Hans"//// 中文
+#define EN @"en" //// 英文
+#define malai @"malai" //// 马来文
+#define FGGetStringWithKeyFromTable(key, tbl) [[ChangeLanguage sharedInstance] getStringForKey:key withTable:tbl]
+#define TokenStr [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"Token"]]
+
+
+//如果release状态就不执行NSLog函数
+#ifndef __OPTIMIZE__
+#define NSLog(...) NSLog(__VA_ARGS__)
+#else
+# define NSLog(...) {}
+#endif
+#define kRegisterBackgroundNoti @"kRegisterBackgroundNoti"
+#define kRegisterFrontNoti @"kRegisterFrontNoti"
+#define kRegisterMessage @"kRegisterMessage"
+#define kRegisterMessageList @"kRegisterMessageList"
+#define sendMessage(key)  [[NSNotificationCenter defaultCenter] postNotificationName:key object:self userInfo:nil];//发送通知
+#define ACCEPTTYPENORMAL @[@"application/json",@"application/xml",@"text/json",@"text/javascript",@"text/html",@"text/plain"]
+#define ACCEPTTYPEIMAGE @[@"text/plain", @"multipart/form-data", @"application/json", @"text/html", @"image/jpeg", @"image/png", @"application/octet-stream", @"text/json"]
+//以iphone5，5s，5c为基本机型，其他型号机器按比例系数做乘法.
+
+#define autoSizeScaleX_5s SCREEN_WIDTH/320.f
+#define autoSizeScaleY_5s SCREEN_HEIGHT/568.f
+#define autoSizeScaleX  SCREEN_WIDTH/414.f
+#define autoSizeScaleY  SCREEN_HEIGHT/736.f
+#define autoSizeScaleX_6  SCREEN_WIDTH/375
+#define autoSizeScaleY_6  SCREEN_HEIGHT/667
+#define autoSizeScaleX_X  SCREEN_WIDTH/375
+#define autoSizeScaleY_X  SCREEN_HEIGHT/812
+
+
+//#define FuWuQiUrl @"http://192.168.0.86:8080"  ////本地测试服
+#define FuWuQiUrl @"http://47.74.242.244:30000" ////新加坡测试服
+//#define FuWuQiUrl @"http://ppb.f3322.net:8081" ////线上测试服
+//#define FuWuQiUrl @"http://192.168.0.25:8080" ////内网服
+
+
+#define Post_token @"/api/user/v1/notify/app/token/add"  /////更新token
+
+#define Get_OrderList @"/api/orders/v1/letter/location/query" ///查询信件列表接口
+#define Post_Letter @"/api/orders/v1/letter/take/app"  //App 取信件接口
+#define Get_take_info @"/api/locker/v1/task/info/" ///// 查询取信 状态
+
+#define Get_BaoguoList @"/api/orders/v1/parcel/query/list" ///查询包裹列表
+#define Post_parcel @"/api/orders/v1/parcel/take/app"  ////APP取包裹
+#define Get_infoXQ @"/api/orders/v1/parcel/info/" ////  查询包裹详情
+
+#define Get_HistoryList @"/api/orders/v1/history/list"   /////查询包裹信件完成的历史记录
+
+#define Post_address @"/api/user/v1/address/create" /////新建地址
+#define Post_addressUpdate @"/api/user/v1/address/update"  /////修改地址信息
+#define Post_addressDelete @"/api/user/v1/address/delete/"  /////删除地址
+#define Get_addressList @"/api/user/v1/address/list" ///// 查询地址i列表
+
+
+#define Post_createOrder @"/api/orders/v1/post/create"  ///新建寄件订单
+
+#define Post_updateJJAddress @"/api/orders/v1/post/address/update" /////更新寄件地址信息
+#define Get_ToPostList @"/api/orders/v1/to-post/list" //// 获取待寄件列表
+#define Get_DaiListInfo @"/api/orders/v1/to-post/info/"////// 获取待寄件详情
+///////   GCD封装一下  //可以暂停延时执行
+typedef void(^SMDelayedBlockHandle)(BOOL cancel);
+
+static SMDelayedBlockHandle perform_block_after_delay(CGFloat seconds, dispatch_block_t block) {
+    
+    if (nil == block) {
+        return nil;
+    }
+    
+    __block dispatch_block_t blockToExecute = [block copy];
+    __block SMDelayedBlockHandle delayHandleCopy = nil;
+    //我们新建一个block回调，当延迟操作完成时，让GCD走这个回调，我们可以控制这个回调的取消。
+    SMDelayedBlockHandle delayHandle = ^(BOOL cancel){
+        if (NO == cancel && nil != blockToExecute) {
+            dispatch_async(dispatch_get_main_queue(), blockToExecute);
+        }
+        
+        blockToExecute = nil;
+        delayHandleCopy = nil;
+    };
+    
+    delayHandleCopy = [delayHandle copy];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, seconds * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        if (nil != delayHandleCopy) {
+            delayHandleCopy(NO);
+        }
+    });
+    
+    return delayHandleCopy;
+};
+
+
+#endif /* NewPostal_pch */

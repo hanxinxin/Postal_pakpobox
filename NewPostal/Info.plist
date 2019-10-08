@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Postal Station</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -15,11 +17,30 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.0.12</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>1.0.12</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>You need access to your camera to scan</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Use face unlock to log in to the APP</string>
+	<key>NSLocationAlwaysAndWhenInUsageDescription</key>
+	<string>You need to get your location to find the store</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>You need to get your location to find the store</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>You need to get your location to find the store</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Please allow access to the album</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -41,5 +62,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

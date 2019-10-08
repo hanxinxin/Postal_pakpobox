@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="LetterNameTableViewCell" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="LetterNameTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tvc-tU-qmJ">
+                        <rect key="frame" x="16" y="5" width="115" height="39"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="115" id="Pq0-rN-IsD"/>
+                            <constraint firstAttribute="height" constant="39" id="jnj-kA-Uj9"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GvJ-GO-NmF" customClass="HQTextField">
+                        <rect key="frame" x="134" y="5" width="140" height="39"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="39" id="eK1-Sn-jGC"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNA-Pj-KPx">
+                        <rect key="frame" x="282" y="9" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="YCR-GN-tFW"/>
+                            <constraint firstAttribute="width" constant="30" id="bh9-6C-yH6"/>
+                        </constraints>
+                        <state key="normal" image="icon_Address.png"/>
+                        <connections>
+                            <action selector="Address_touch:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="wU2-Nq-TAe"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Tvc-tU-qmJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="38P-SF-7pQ"/>
+                    <constraint firstItem="GvJ-GO-NmF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="83q-oq-qGE"/>
+                    <constraint firstItem="CNA-Pj-KPx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="ONg-jp-an8"/>
+                    <constraint firstAttribute="trailing" secondItem="CNA-Pj-KPx" secondAttribute="trailing" constant="8" id="jWD-PZ-zXM"/>
+                    <constraint firstItem="CNA-Pj-KPx" firstAttribute="leading" secondItem="GvJ-GO-NmF" secondAttribute="trailing" constant="8" id="kfK-je-ar0"/>
+                    <constraint firstItem="GvJ-GO-NmF" firstAttribute="leading" secondItem="Tvc-tU-qmJ" secondAttribute="trailing" constant="3" id="lGf-Yt-tGa"/>
+                    <constraint firstAttribute="bottom" secondItem="CNA-Pj-KPx" secondAttribute="bottom" constant="10.5" id="osY-SO-JIT"/>
+                    <constraint firstItem="Tvc-tU-qmJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="t5Q-YQ-3D3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="LeftTitle" destination="Tvc-tU-qmJ" id="1lz-O4-lI7"/>
+                <outlet property="RightField" destination="GvJ-GO-NmF" id="lZw-37-OjH"/>
+                <outlet property="phoneImage" destination="CNA-Pj-KPx" id="7dn-AF-Eha"/>
+            </connections>
+            <point key="canvasLocation" x="-4.3478260869565224" y="51.5625"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_Address.png" width="22" height="22"/>
+    </resources>
+</document>
