@@ -12,7 +12,7 @@
 #import "LetterMobileTableViewCell.h"
 #import "LZPickerView.h"
 #import "ComDetailInfoViewController.h"
-
+#import "CityListViewController.h"
 
 #define TableID @"TextTableViewCell"
 //#define TableNameID @"LetterNameTableViewCell"
@@ -32,7 +32,8 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithRed:241/255.0 green:241/255.0 blue:241/255.0 alpha:1.0];
     arrListTitle = [NSMutableArray arrayWithCapacity:0];
-    [arrListTitle addObject:@[@"Name",@"Mobile",@"Country",@"Address line 1",@"Address line 1",@"Postal Code"]];
+//    [arrListTitle addObject:@[@"Name",@"Mobile",@"Country",@"Address line 1",@"Address line 1",@"Postal Code"]];
+    [arrListTitle addObject:@[@"Recipient Name",@"Country",@"Postal Code",@"Block/House No.",@"Street Name",@"Floor-Unit",@"Building Name"]];
     indexRowtag=0;
     
     self.CountryArr = [NSMutableArray arrayWithCapacity:0];
@@ -63,7 +64,7 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     //    self.title=@"Cleapro";
-    self.title=FGGetStringWithKeyFromTable(@"Detail Info", @"Language");
+    self.title=FGGetStringWithKeyFromTable(@"Add address", @"Language");
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor blackColor]}];
     
     [super viewWillAppear:animated];
@@ -420,6 +421,7 @@
             lbl.frame = CGRectMake(16 , 0, cell.width-16*2, 1);
             lbl.backgroundColor =  [UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1];
             [cell.contentView addSubview:lbl];
+            /*
             if(indexPath.row==1)
             {
                 LetterMobileTableViewCell *cellMobile = (LetterMobileTableViewCell *)[tableView dequeueReusableCellWithIdentifier:TableMobileID];
@@ -456,18 +458,29 @@
 //                    [cellMobile.centerB setTitle:@"+65" forState:(UIControlStateNormal)];
                     [cellMobile.centerB setTitle:self.ListMode.countryCallingCode forState:(UIControlStateNormal)];
                 }
-                dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.07/*延迟执行时间*/ * NSEC_PER_SEC));
+                dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.07 * NSEC_PER_SEC));
                 dispatch_after(delayTime, dispatch_get_main_queue(), ^{
                     cellMobile.RightField.frame = CGRectMake(cellMobile.LeftTitle.right+8, 5, cellMobile.width-cellMobile.LeftTitle.right-cellMobile.accessoryView.width, 39);
                 });
                 return cellMobile;
-            }else if(indexPath.row==2)
+            }else
+                */
+                if(indexPath.row==1)
             {
+                cell.RightField.userInteractionEnabled=NO;
+                if(self.ListMode!=nil)
+                {
+                    cell.RightField.text=self.ListMode.country;
+                }else
+                {
+                    cell.RightField.text=@"Singapore";
+                }
+                cell.RightField.textColor = [UIColor colorWithRed:20/255.0 green:146/255.0 blue:230/255.0 alpha:1.0];
                 UIImageView *accessoryImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_nextDown"]];
                 cell.accessoryView = accessoryImgView;
             }
         }
-        if(indexPath.row==0 || indexPath.row==5)
+        if(indexPath.row==0 || indexPath.row==6)
         {
             if(indexPath.row==0)
             {
@@ -480,7 +493,7 @@
                     cell.layer.mask = maskLayer;
                 });
                 NSLog(@"indexPath.row2222=== %ld",(long)indexPath.row);
-            }else if(indexPath.row==5)
+            }else if(indexPath.row==6)
             {
                 NSLog(@"indexPath.row111=== %ld",(long)indexPath.row);
                 dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.07/*延迟执行时间*/ * NSEC_PER_SEC));
@@ -531,6 +544,7 @@
     //        CollViewController *Avc=[main instantiateViewControllerWithIdentifier:@"CollViewController"];
     //        Avc.hidesBottomBarWhenPushed = YES;
     //        [self.navigationController pushViewController:Avc animated:YES];
+    /*
     if(indexPath.row==2 || indexPath.row==1)
     {
         LetterMobileTableViewCell * cell = (LetterMobileTableViewCell*)[TableView cellForRowAtIndexPath:indexPath];
@@ -540,7 +554,14 @@
         [self addLZPickerView:self.CountryArr ViewTag:[[NSString stringWithFormat:@"200%ld%ld",(long)indexPath.section,(long)indexPath.row] integerValue]];
         }
     }
-        
+     */
+    if(indexPath.row==1)
+    {
+        UIStoryboard *main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        CityListViewController *Avc=[main instantiateViewControllerWithIdentifier:@"CityListViewController"];
+        Avc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:Avc animated:YES];
+    }
 }
 
 #pragma mark ----------

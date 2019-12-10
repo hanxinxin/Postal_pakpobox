@@ -30,6 +30,7 @@
     } else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
+    self.AddNew.hidden=YES;
     self.navigationController.navigationBar.translucent = YES;
     self.view.backgroundColor = [UIColor colorWithRed:241/255.0 green:241/255.0 blue:241/255.0 alpha:1.0];
     self.AddNew.layer.cornerRadius = 25;
@@ -43,8 +44,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     //    self.title=@"Cleapro";
     self.title=FGGetStringWithKeyFromTable(@"To Post", @"Language");
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor blackColor]}];
-    
+//    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor blackColor]}];
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+       [btn setTitle:@"" forState:UIControlStateNormal];
+       [btn setImage:[UIImage imageNamed:@"icon_zengjia"] forState:(UIControlStateNormal)];
+       [btn addTarget:self action:@selector(rightTouch:) forControlEvents:UIControlEventTouchDown];
+       UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithCustomView:btn];
+       self.navigationItem.rightBarButtonItem = rightBtn;
     [super viewWillAppear:animated];
     
 }
@@ -56,7 +62,16 @@
     self.navigationItem.backBarButtonItem = backBtn;
     [super viewWillDisappear:animated];
 }
-
+-(void)rightTouch:(id)sender
+{
+//    PostSGQViewController * Avc = [[PostSGQViewController alloc] init];
+//    [self.navigationController pushViewController:Avc animated:YES];
+    UIStoryboard *main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LetterTBViewController *Avc=[main instantiateViewControllerWithIdentifier:@"LetterTBViewController"];
+    Avc.hidesBottomBarWhenPushed = YES;
+    Avc.ItemNumber = @"";
+    [self.navigationController pushViewController:Avc animated:YES];
+}
 -(void)addnilView
 {
     self.NilVIew.hidden=NO;
@@ -227,7 +242,7 @@
     lbl.frame = CGRectMake(cell.frame.origin.x + 10, 0, self.view.width-1, 1);
     lbl.backgroundColor =  [UIColor clearColor];
     [cell.contentView addSubview:lbl];
-    
+    [cell.PopButton setImage:[UIImage imageNamed:@"icon_delete"] forState:(UIControlStateNormal)];
     cell.backgroundColor = [UIColor whiteColor];
     //cell选中效果
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

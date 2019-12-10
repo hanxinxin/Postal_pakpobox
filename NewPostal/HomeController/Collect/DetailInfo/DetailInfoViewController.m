@@ -11,11 +11,15 @@
 #import "ListTableViewCell.h"
 #import "QRTableViewCell.h"
 #import "WCQRCodeScanningVC.h"
+#import "LettersNewTableViewCell.h"
+#import "CellViewDown.h"
+#import "PLXQTableViewCell.h"
 
 #define tableID1 @"SingTableViewCell"
 #define tableID2 @"ListTableViewCell"
 #define tableID3 @"QRTableViewCell"
-
+#define TableIDNew @"LettersNewTableViewCell"
+#define TableIDDown @"PLXQTableViewCell"
 
 
 @interface DetailInfoViewController ()<UITableViewDelegate,UITableViewDataSource,QRTableViewCellDelegate>
@@ -176,6 +180,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 3;
 }
+
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section==0)
@@ -250,6 +255,8 @@
     return nil;
 }
 
+
+
 //设置间隔高度
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 10.f;
@@ -281,7 +288,7 @@
 //选中时 调用的方法
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"点击 = %ld",indexPath.section);
+    NSLog(@"点击 = %ld",(long)indexPath.section);
     //        UIStoryboard *main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
     //        OrdersUnpaidViewController *vc=[main instantiateViewControllerWithIdentifier:@"OrdersUnpaidViewController"];
     //        vc.hidesBottomBarWhenPushed = YES;

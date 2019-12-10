@@ -11,6 +11,7 @@
 #import "CRNavigationController.h"
 #import "AddressInfoViewController.h"
 #import "ScanCQRViewController.h"
+#import "CityListViewController.h"
 @interface MineViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 
@@ -268,6 +269,13 @@
 //            vc.hidesBottomBarWhenPushed = YES;
 //            self.definesPresentationContext = YES;
 //            [self.navigationController pushViewController:vc animated:YES];
+    }else if(indexPath.section==1)
+    {
+        
+        UIStoryboard *main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        CityListViewController *Avc=[main instantiateViewControllerWithIdentifier:@"CityListViewController"];
+        Avc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:Avc animated:YES];
     }else if(indexPath.section==2)
     {
         UIStoryboard *main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];

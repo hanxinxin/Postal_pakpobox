@@ -30,6 +30,9 @@ NSString *const kGCMMessageIDKey = @"gcm.message_id";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    
+
     ///// 腾讯bugly bug追踪
     [Bugly startWithAppId:BuglyAppId];
     ////// 谷歌推送
@@ -85,7 +88,8 @@ NSString *const kGCMMessageIDKey = @"gcm.message_id";
     {
         sendNotification(@"Messagenotification");//发送通知
     }
-    
+    //设置全局状态栏字体颜色为黑色
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     return YES;
 }
 // With "FirebaseAppDelegateProxyEnabled": NO

@@ -35,6 +35,7 @@
     } else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
+    
     self.view.backgroundColor = [UIColor colorWithRed:241/255.0 green:241/255.0 blue:241/255.0 alpha:1.0];
     self.imgArr=[NSMutableArray arrayWithCapacity:0];
     [self.imgArr addObject:@"Banner02"];
@@ -423,16 +424,21 @@
     return cell;
 }
 
-//设置间隔高度
+//设置头部间隔高度
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 10.f;
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+//设置底部间隔高度
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     if (section == 0) {
         return CGFLOAT_MIN;//最小数，相当于0
     }
     else if(section == 1){
         return CGFLOAT_MIN;//最小数，相当于0
+    }
+    if(section==1)
+    {
+        return 10.f;
     }
     return 0;//机器不可识别，然后自动返回默认高度
 }
@@ -442,6 +448,18 @@
 //    view_c.frame=CGRectMake(0, 0, 0, 0);
     view_c.backgroundColor=[UIColor colorWithRed:241/255.0 green:241/255.0 blue:241/255.0 alpha:1.0];
 //    view_c.backgroundColor=[UIColor whiteColor];
+    return view_c;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    //自定义间隔view，可以不写默认用系统的
+    UIView * view_c= [[UIView alloc] init];
+//    view_c.frame=CGRectMake(0, 0, 0, 0);
+    view_c.backgroundColor=[UIColor clearColor];
+    UILabel * label = [[UILabel alloc] initWithFrame:view_c.frame];
+    label.text = @"Powered by Pakpobox";
+    label.textColor = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1.0];
+    label.font = [UIFont systemFontOfSize:16];
+    [view_c addSubview:label];
     return view_c;
 }
 //行高

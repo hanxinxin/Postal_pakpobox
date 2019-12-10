@@ -20,6 +20,17 @@
 @interface PostSGQViewController () <SGQRCodeScanManagerDelegate, SGQRCodeAlbumManagerDelegate,CBCentralManagerDelegate,UIGestureRecognizerDelegate>
 {
     BOOL QRBool;
+    
+    /////全屏透明色view和 button Lable
+    UIView * Tuicang_View;
+    UIView * TC_CenterView;
+    UILabel * tisp_lable;
+    UILabel * miaoshu_lable;
+    UIButton * Come_btn;
+    UIButton * back_btn;
+    UITapGestureRecognizer *tapSuperGesture22;
+    
+    
 }
 
 
@@ -77,6 +88,7 @@
     
 //    [self.navigationController.navigationBar setHidden:YES];
     
+   
 }
 -(void)backTouch:(id)sender
 {
@@ -136,6 +148,12 @@
         [back addTarget:self action:@selector(backTouch:) forControlEvents:(UIControlEventTouchUpInside)];
         
         [self.view addSubview:back];
+         
+    });
+    dispatch_time_t delayTime2 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2/*延迟执行时间*/ * NSEC_PER_SEC));
+    
+    dispatch_after(delayTime2, dispatch_get_main_queue(), ^{
+        [self addselect_view:2];
     });
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(CameraScaleAction:)];
     [self.scanningView addGestureRecognizer:tap];
@@ -447,6 +465,140 @@
     });
 }
 
+
+
+#pragma mark ------- 全屏View 背景透明 --------
+
+/**
+ 全屏View 背景透明 //没钱支付的时候提示他需要充值
+ index  1是 没钱提醒充值  2是 没有设置支付密码
+ */
+-(void)addselect_view:(NSInteger)index
+{
+    Tuicang_View=[[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 0)];
+//    [Tuicang_View setBackgroundColor:[UIColor colorWithRed:60/255.0 green:60/255.0 blue:60/255.0 alpha:0.3]];
+    [Tuicang_View setBackgroundColor:[UIColor clearColor]];
+    
+    tapSuperGesture22 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapSuperView:)];
+    tapSuperGesture22.delegate = self;
+    [Tuicang_View addGestureRecognizer:tapSuperGesture22];
+    TC_CenterView = [[UIView alloc] initWithFrame:CGRectMake(43*autoSizeScaleX_6, (SCREEN_HEIGHT-200)/2, SCREEN_WIDTH-(43*autoSizeScaleX_6*2), 200)];
+    [TC_CenterView setBackgroundColor:[UIColor whiteColor]];
+    TC_CenterView.layer.cornerRadius=4;
+//    [Tuicang_View addSubview:TC_CenterView];
+    tisp_lable=[[UILabel alloc] initWithFrame:CGRectMake(0, 10, SCREEN_WIDTH-(38*autoSizeScaleX_6*2), 30)];
+    [tisp_lable setText:@"Notice"];
+    [tisp_lable setFont:[UIFont boldSystemFontOfSize:30]];
+    tisp_lable.font = [UIFont systemFontOfSize:14];
+    //文字居中显示
+    tisp_lable.textAlignment = NSTextAlignmentCenter;
+    
+    miaoshu_lable=[[UILabel alloc] initWithFrame:CGRectMake(20, 25+15, TC_CenterView.width-(20*2), 125)];
+    if(index==1)
+    {
+        [miaoshu_lable setText:FGGetStringWithKeyFromTable(@"This mail id PS120385738496084 has been registered, please modify the letter info you have registered.", @"Language")];
+    }else if(index==2)
+    {
+        [miaoshu_lable setText:FGGetStringWithKeyFromTable(@"This mail id PS120385738496084 has been used, please change another one !", @"Language")];
+    }
+    miaoshu_lable.font = [UIFont systemFontOfSize:14];
+    miaoshu_lable.textColor =[UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1.0];
+    //文字居中显示
+    miaoshu_lable.textAlignment = NSTextAlignmentCenter;
+    //自动折行设置
+    miaoshu_lable.numberOfLines = 0;
+    back_btn = [[UIButton alloc] initWithFrame:CGRectMake(15, TC_CenterView.height-45, 120, 30)];
+    [back_btn setTitle:FGGetStringWithKeyFromTable(@"Cancel post", @"Language") forState:UIControlStateNormal];
+    [back_btn setBackgroundColor:[UIColor colorWithRed:26/255.0 green:149/255.0 blue:229/255.0 alpha:1.0]];
+    [back_btn setTitleColor:[UIColor whiteColor]forState:UIControlStateNormal];
+    back_btn.titleLabel.font = [UIFont systemFontOfSize: 14.0];
+    back_btn.layer.cornerRadius=15;
+    back_btn.layer.borderColor = [UIColor colorWithRed:26/255.0 green:149/255.0 blue:229/255.0 alpha:1.0].CGColor;//设置边框颜色
+    back_btn.layer.borderWidth = 1.0f;//设置边框颜色
+    [back_btn addTarget:self action:@selector(Touch_two:) forControlEvents:UIControlEventTouchDown];
+    Come_btn = [[UIButton alloc] initWithFrame:CGRectMake((TC_CenterView.width-150)/2, TC_CenterView.height-45, 150, 30)];
+    NSLog(@"%f,%d,%d,%d",(TC_CenterView.width-150)/2, 200-45, 150, 30);
+    if(index==1)
+    {
+        [Come_btn setTitle:FGGetStringWithKeyFromTable(@"OK, go to modify", @"Language") forState:UIControlStateNormal];
+        Come_btn.tag=1002;  ///
+        back_btn.hidden=YES;
+        Come_btn.frame = CGRectMake((TC_CenterView.width-150)/2, 200-45, 150, 30);
+    }else if(index==2)
+    {
+        [Come_btn setTitle:FGGetStringWithKeyFromTable(@"OK, go to modify", @"Language") forState:UIControlStateNormal];
+        Come_btn.tag=1001;  ///
+        back_btn.hidden=NO;
+        Come_btn.frame = CGRectMake((TC_CenterView.width-120-15), 200-45, 120, 30);
+    }
+    
+    [Come_btn setBackgroundColor:[UIColor colorWithRed:26/255.0 green:149/255.0 blue:229/255.0 alpha:1.0]];
+    [Come_btn setTitleColor:[UIColor whiteColor]forState:UIControlStateNormal];
+    Come_btn.titleLabel.font = [UIFont systemFontOfSize: 14.0];
+    Come_btn.layer.cornerRadius=15;
+    Come_btn.layer.borderColor = [UIColor colorWithRed:26/255.0 green:149/255.0 blue:229/255.0 alpha:1.0].CGColor;//设置边框颜色
+    Come_btn.layer.borderWidth = 1.0f;//设置边框颜色
+    [Come_btn addTarget:self action:@selector(Touch_one:) forControlEvents:UIControlEventTouchDown];
+    
+    [TC_CenterView addSubview:tisp_lable];
+    [TC_CenterView addSubview:miaoshu_lable];
+    [TC_CenterView addSubview:Come_btn];
+    [TC_CenterView addSubview:back_btn];
+    [Tuicang_View addSubview:TC_CenterView];
+    [self.view addSubview:Tuicang_View];
+    [self show_TCview];
+    [self.manager stopRunning];
+    [self.manager videoPreviewLayerRemoveFromSuperlayer];
+}
+
+-(void)show_TCview
+{
+    [UIView animateWithDuration:(0.5)/*动画持续时间*/animations:^{
+        //执行的动画
+        self->Tuicang_View.frame=self.view.bounds;
+    }];
+    
+}
+-(void)hidden_TCview
+{
+    [UIView animateWithDuration:0.6/*动画持续时间*/animations:^{
+        //执行的动画
+        self->Tuicang_View.frame =CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 0);
+    }completion:^(BOOL finished){
+        //动画执行完毕后的操作
+        [self->Tuicang_View removeFromSuperview];
+    }];
+}
+- (void)tapSuperView:(UITapGestureRecognizer *)gesture {
+    
+//    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
+//    CGPoint location = [gesture locationInView:Tuicang_View];
+//    CGRect rec = [self.view convertRect:TC_CenterView.frame   fromView:Tuicang_View];
+////    NSLog(@"%@",NSStringFromCGRect(rec));
+//    NSLog(@"location.x== %f,location.y== %f,",location.x,location.y);
+//    NSLog(@"x== %f,y== %f,",rec.origin.x,rec.origin.y);
+//    if(location.x<TC_CenterView.left)
+//    {
+//            [self hidden_TCview];
+//            [Tuicang_View removeGestureRecognizer:tapSuperGesture22 ];
+//
+//    }
+}
+-(void)Touch_one:(UIButton*)sender
+{
+
+    [self.manager startRunning];
+    [self setupQRCodeScanning];
+    [self hidden_TCview];
+    [Tuicang_View removeGestureRecognizer:tapSuperGesture22 ];
+}
+-(void)Touch_two:(id)semder
+{
+    [self hidden_TCview];
+    [Tuicang_View removeGestureRecognizer:tapSuperGesture22 ];
+//    [self pushDetailsListViewController];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 @end

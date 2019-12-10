@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cag-wT-yZi">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cag-wT-yZi">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,32 +17,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="VnD-gB-Eda">
-                                <rect key="frame" x="100" y="154" width="175" height="62"/>
+                                <rect key="frame" x="100" y="134" width="175" height="62"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="175" id="Msd-bX-JbR"/>
                                     <constraint firstAttribute="height" constant="62" id="afU-B8-Agv"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Login name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G3K-QY-um3" customClass="HQTextField">
-                                <rect key="frame" x="16" y="296" width="343" height="50"/>
+                                <rect key="frame" x="16" y="276" width="343" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="6yp-Sa-pLG"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WvE-bt-bTs" customClass="HQTextField">
-                                <rect key="frame" x="16" y="366" width="343" height="50"/>
+                                <rect key="frame" x="16" y="346" width="343" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="zKt-Kf-Ebr"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPP-lE-J3H">
-                                <rect key="frame" x="16" y="456" width="343" height="50"/>
+                                <rect key="frame" x="16" y="436" width="343" height="50"/>
                                 <color key="backgroundColor" red="0.026882974430918694" green="0.31137561798095703" blue="0.66901308298110962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="5ib-7j-TNJ"/>
@@ -95,7 +91,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P89-C5-Kwh">
-                                <rect key="frame" x="16" y="212" width="343" height="100"/>
+                                <rect key="frame" x="16" y="192" width="343" height="100"/>
                                 <color key="backgroundColor" red="0.07746625691652298" green="0.57353895902633667" blue="0.90170913934707642" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="MN4-dn-ajV"/>
@@ -110,7 +106,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ay1-6K-eXh">
-                                <rect key="frame" x="16" y="332" width="343" height="100"/>
+                                <rect key="frame" x="16" y="312" width="343" height="100"/>
                                 <color key="backgroundColor" red="0.99923259019851685" green="0.25599554181098938" blue="0.34184622764587402" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="n6V-AE-e1c"/>
@@ -125,7 +121,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="CUd-sF-RJ9">
-                                <rect key="frame" x="100" y="110" width="175" height="62"/>
+                                <rect key="frame" x="100" y="90" width="175" height="62"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="62" id="0qr-Bb-Kut"/>
                                     <constraint firstAttribute="width" constant="175" id="af3-BU-1cH"/>
@@ -160,8 +156,8 @@
         <scene sceneID="RZq-3D-2lV">
             <objects>
                 <navigationController storyboardIdentifier="CRNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Cag-wT-yZi" customClass="CRNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backIndicatorImage="icon_back.png" id="WEF-0C-UF6">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" backIndicatorImage="icon_back.png" id="WEF-0C-UF6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -588,7 +584,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pSw-EY-imC" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="44" y="1011"/>
+            <point key="canvasLocation" x="1" y="1200"/>
         </scene>
         <!--Location View Controller-->
         <scene sceneID="QeK-Bk-p8J">
@@ -712,7 +708,7 @@ Suntec Convention Centre Hall 403, S(039593)</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f9L-Fx-YSR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="694" y="1011"/>
+            <point key="canvasLocation" x="678" y="1200"/>
         </scene>
         <!--Mine View Controller-->
         <scene sceneID="yOJ-kZ-ICL">
@@ -786,8 +782,9 @@ Suntec Convention Centre Hall 403, S(039593)</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PaF-75-3rH">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PaF-75-3rH">
                                 <rect key="frame" x="14" y="0.0" width="347" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.94500499963760376" green="0.94516319036483765" blue="0.94498419761657715" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sts-yb-lU2">
@@ -822,10 +819,6 @@ Suntec Convention Centre Hall 403, S(039593)</string>
                         </subviews>
                         <color key="backgroundColor" red="0.94500499963760376" green="0.94516319036483765" blue="0.94498419761657715" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="PaF-75-3rH" firstAttribute="top" secondItem="nbg-PL-HuP" secondAttribute="top" id="1cj-kI-20Q"/>
-                            <constraint firstItem="PaF-75-3rH" firstAttribute="bottom" secondItem="8PP-a1-c4a" secondAttribute="bottom" id="5RM-sW-aHK"/>
-                            <constraint firstItem="8PP-a1-c4a" firstAttribute="trailing" secondItem="PaF-75-3rH" secondAttribute="trailing" constant="14" id="6M4-Hy-QWi"/>
-                            <constraint firstItem="PaF-75-3rH" firstAttribute="leading" secondItem="8PP-a1-c4a" secondAttribute="leading" constant="14" id="Aks-Fc-AFh"/>
                             <constraint firstItem="Sts-yb-lU2" firstAttribute="bottom" secondItem="8PP-a1-c4a" secondAttribute="bottom" id="C1e-bV-OMW"/>
                             <constraint firstItem="Sts-yb-lU2" firstAttribute="leading" secondItem="8PP-a1-c4a" secondAttribute="leading" id="D9i-rm-L6Q"/>
                             <constraint firstItem="Sts-yb-lU2" firstAttribute="trailing" secondItem="8PP-a1-c4a" secondAttribute="trailing" id="U3V-RU-t0o"/>
@@ -876,32 +869,30 @@ Suntec Convention Centre Hall 403, S(039593)</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="GAi-bm-FzZ">
-                                <rect key="frame" x="100" y="110" width="175" height="62"/>
+                                <rect key="frame" x="100" y="90" width="175" height="62"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="62" id="fWE-g7-Zxd"/>
                                     <constraint firstAttribute="width" constant="175" id="hWL-SA-fVy"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Dispenser" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gwY-e4-Udx" customClass="HQTextField">
-                                <rect key="frame" x="16" y="252" width="280" height="50"/>
+                                <rect key="frame" x="16" y="232" width="280" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="XzF-7v-Qpg"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Packet No." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OBa-QY-8G8" customClass="HQTextField">
-                                <rect key="frame" x="16" y="322" width="280" height="50"/>
+                                <rect key="frame" x="16" y="302" width="280" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Nol-FG-SYx"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6c-dJ-Y3X">
-                                <rect key="frame" x="16" y="412" width="343" height="50"/>
+                                <rect key="frame" x="16" y="392" width="343" height="50"/>
                                 <color key="backgroundColor" red="0.026882974430000001" green="0.31137561800000002" blue="0.66901308299999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Tna-ZQ-u0D"/>
@@ -915,7 +906,7 @@ Suntec Convention Centre Hall 403, S(039593)</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ce-s0-Ura">
-                                <rect key="frame" x="309" y="252" width="50" height="50"/>
+                                <rect key="frame" x="309" y="232" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="JT6-lp-b6O"/>
                                     <constraint firstAttribute="width" constant="50" id="SGR-lq-FlG"/>
@@ -923,7 +914,7 @@ Suntec Convention Centre Hall 403, S(039593)</string>
                                 <state key="normal" image="icon_Scan to Collect.png"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y8S-bi-Dxd">
-                                <rect key="frame" x="309" y="322" width="50" height="50"/>
+                                <rect key="frame" x="309" y="302" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="5oL-Pd-6s6"/>
                                     <constraint firstAttribute="width" constant="50" id="rfd-KT-gJL"/>
@@ -931,7 +922,7 @@ Suntec Convention Centre Hall 403, S(039593)</string>
                                 <state key="normal" image="icon_Scan to Collect.png"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y1D-fH-C7T">
-                                <rect key="frame" x="16" y="482" width="343" height="50"/>
+                                <rect key="frame" x="16" y="462" width="343" height="50"/>
                                 <color key="backgroundColor" red="0.026882974430000001" green="0.31137561800000002" blue="0.66901308299999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="5qH-4x-4f1"/>
@@ -992,23 +983,22 @@ Suntec Convention Centre Hall 403, S(039593)</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="5bd-at-bGJ">
-                                <rect key="frame" x="100" y="110" width="175" height="62"/>
+                                <rect key="frame" x="100" y="90" width="175" height="62"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="62" id="HjF-EE-RKS"/>
                                     <constraint firstAttribute="width" constant="175" id="WJr-uB-CBx"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Stot No." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TnN-qt-Gat" customClass="HQTextField">
-                                <rect key="frame" x="16" y="252" width="280" height="50"/>
+                                <rect key="frame" x="16" y="232" width="280" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="3xN-u1-7Nq"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dhd-Y9-eJB">
-                                <rect key="frame" x="16" y="412" width="343" height="50"/>
+                                <rect key="frame" x="16" y="392" width="343" height="50"/>
                                 <color key="backgroundColor" red="0.026882974430000001" green="0.31137561800000002" blue="0.66901308299999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="5cP-LB-Icq"/>
@@ -1022,7 +1012,7 @@ Suntec Convention Centre Hall 403, S(039593)</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P38-7u-YJZ">
-                                <rect key="frame" x="309" y="252" width="50" height="50"/>
+                                <rect key="frame" x="309" y="232" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="5aN-gu-nIN"/>
                                     <constraint firstAttribute="width" constant="50" id="sOb-0H-dVz"/>
@@ -1056,6 +1046,36 @@ Suntec Convention Centre Hall 403, S(039593)</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8N-qX-4eb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3124" y="704"/>
+        </scene>
+        <!--City List View Controller-->
+        <scene sceneID="JZD-fL-4Fb">
+            <objects>
+                <viewController storyboardIdentifier="CityListViewController" id="ZJT-qC-bDw" customClass="CityListViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="at3-NX-Mq1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0k3-r6-Lf4">
+                                <rect key="frame" x="8" y="0.0" width="359" height="667"/>
+                                <color key="backgroundColor" red="0.93716251850128174" green="0.93731945753097534" blue="0.93714183568954468" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94500499963760376" green="0.94516319036483765" blue="0.94498419761657715" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="0k3-r6-Lf4" firstAttribute="bottom" secondItem="uDJ-BG-jIr" secondAttribute="bottom" id="EiI-xx-mHn"/>
+                            <constraint firstItem="0k3-r6-Lf4" firstAttribute="top" secondItem="uDJ-BG-jIr" secondAttribute="top" id="HUG-Y6-Xc8"/>
+                            <constraint firstItem="uDJ-BG-jIr" firstAttribute="trailing" secondItem="0k3-r6-Lf4" secondAttribute="trailing" constant="8" id="Wco-Y3-mXH"/>
+                            <constraint firstItem="0k3-r6-Lf4" firstAttribute="leading" secondItem="uDJ-BG-jIr" secondAttribute="leading" constant="8" id="eGW-YT-30j"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="uDJ-BG-jIr"/>
+                    </view>
+                    <connections>
+                        <outlet property="CityTableView" destination="0k3-r6-Lf4" id="QvE-fI-AWz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="59F-pu-hie" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-588" y="-2029.8350824587708"/>
         </scene>
         <!--Address Info View Controller-->
         <scene sceneID="uUE-j3-F84">

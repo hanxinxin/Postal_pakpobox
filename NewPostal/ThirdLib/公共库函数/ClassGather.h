@@ -89,4 +89,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+
+@interface countriesClass : NSObject
+@property (strong,nonatomic)NSString * Gname;
+@property (strong,nonatomic)NSString * Gtitle;
+@property (strong,nonatomic)NSString * GImage;
+@end
 NS_ASSUME_NONNULL_END

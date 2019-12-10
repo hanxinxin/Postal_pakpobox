@@ -13,12 +13,14 @@
 #import "LZPickerView.h"
 #import "ComDetailInfoViewController.h"
 #import "AddressInfoViewController.h"
+#import "PostSGQViewController.h"
+#import "CityListViewController.h"
 
 #define TableID @"TextTableViewCell"
 #define TableNameID @"LetterNameTableViewCell"
 #define TableMobileID @"LetterMobileTableViewCell"
 
-@interface LetterTBViewController ()<UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate,LetterMobileTableViewCellDelegate,TextTableViewCellDelegate,LetterNameTableViewCellDelegate,AddressInfoViewControllerDelegate>
+@interface LetterTBViewController ()<UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate,LetterMobileTableViewCellDelegate,TextTableViewCellDelegate,LetterNameTableViewCellDelegate,AddressInfoViewControllerDelegate,CityListViewControllerDelegate>
 {
     NSInteger indexRowtag;
 }
@@ -42,14 +44,16 @@
     indexRowtag=0;
     self.addressSender = [[AddressInfoMode alloc] init];
     self.addressSender.countryCallingCode =@"+86";
+    self.addressSender.country =@"Singapore";
     self.addressReceiver = [[AddressInfoMode alloc] init];
     self.addressReceiver.countryCallingCode =@"+86";
+    self.addressReceiver.country =@"Singapore";
     [arrListTitle addObject:@[@"Item Number"]];
-    [arrListTitle addObject:@[@"Type"]];
-    [arrListTitle addObject:@[@"Name",@"Mobile",@"Country",@"Address line 1",@"Address line 1",@"Postal Code"]];
-    [arrListTitle addObject:@[@"Name",@"Mobile",@"Country",@"Address line 1",@"Address line 1",@"Postal Code"]];
+//    [arrListTitle addObject:@[@"Type"]];
+    [arrListTitle addObject:@[@"Sender Name",@"Postal Code",@"Block/House No.",@"Street Name",@"Floor-Unit",@"Building Name"]];
+    [arrListTitle addObject:@[@"Recipient Name",@"Country",@"Postal Code",@"Block/House No.",@"Street Name",@"Floor-Unit",@"Building Name"]];
     [arrListTitle addObject:@[@"Complete"]];
-    HeaderArr = @[@"Item Number",@"Posting Type",@"Sender Information",@"Receiver Information"];
+    HeaderArr = @[@"Item Number",@"Sender",@"Recipient Details"];
 //    self.ItemNumber = @"";
     self.PostType = @"LETTER";
     [self setAddressInfo];
@@ -293,15 +297,15 @@
     cell.delegate = self;
     cell.tag = [[NSString stringWithFormat:@"300%ld%ld",indexPath.section,indexPath.row] integerValue];
     cell.contentView.tag = [[NSString stringWithFormat:@"300%ld%ld",indexPath.section,indexPath.row] integerValue];
-    if(indexPath.section==2 || indexPath.section==3)
+    if(indexPath.section==1 || indexPath.section==2)
     {
-        if(indexPath.section==2)
+        if(indexPath.section==1)
         {
         if(self.addressSender!=nil)
         {
             if(indexPath.row==2)
             {
-                cell.RightField.text = self.addressSender.country;
+//                cell.RightField.text = self.addressSender.country;
             }else if(indexPath.row==3)
             {
                 cell.RightField.text = self.addressSender.addressLine1;
@@ -313,13 +317,13 @@
                 cell.RightField.text = self.addressSender.postalCode;
             }
         }
-        }else if(indexPath.section==3)
+        }else if(indexPath.section==2)
         {
                 if(self.addressReceiver!=nil)
                 {
                     if(indexPath.row==2)
                     {
-                        cell.RightField.text = self.addressReceiver.country;
+//                        cell.RightField.text = self.addressReceiver.country;
                     }else if(indexPath.row==3)
                     {
                         cell.RightField.text = self.addressReceiver.addressLine1;
@@ -338,7 +342,7 @@
         lbl.frame = CGRectMake(16 , 0, cell.width-16*2, 1);
         lbl.backgroundColor =  [UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1];
         [cell.contentView addSubview:lbl];
-            if(indexPath.row==1)
+            if(indexPath.section==2 && indexPath.row==1)
             {
                 LetterMobileTableViewCell *cellMobile = (LetterMobileTableViewCell *)[tableView dequeueReusableCellWithIdentifier:TableMobileID];
                 if (cellMobile == nil) {
@@ -353,7 +357,7 @@
                 cellMobile.selectionStyle = UITableViewCellSelectionStyleNone;
 //                [cellMobile.centerB setTitle:@"+65" forState:(UIControlStateNormal)];
 //                [cellMobile.centerB setTitle:self.addressSender.countryCallingCode forState:(UIControlStateNormal)];
-                if(indexPath.section==2)
+                if(indexPath.section==1)
                 {
                     
                     if(self.addressSender.countryCallingCode!=nil)
@@ -365,7 +369,7 @@
                         self.addressSender.countryCallingCode = @"+86";
                         [cellMobile.centerB setTitle:self.addressSender.countryCallingCode forState:(UIControlStateNormal)];
                     }
-                }else if (indexPath.section==3)
+                }else if (indexPath.section==2)
                 {
                     if(self.addressReceiver.countryCallingCode!=nil)
                     {
@@ -377,18 +381,26 @@
                         [cellMobile.centerB setTitle:self.addressReceiver.countryCallingCode forState:(UIControlStateNormal)];
                     }
                 }
+                cellMobile.RightField.text=self.addressReceiver.country;;
+                cellMobile.RightField.textColor = [UIColor colorWithRed:20/255.0 green:146/255.0 blue:230/255.0 alpha:1.0];
                 [cellMobile.centerB setImage:[UIImage imageNamed:@"icon_nextDown"] forState:(UIControlStateNormal)];
                 cellMobile.centerB.titleEdgeInsets = UIEdgeInsetsMake(0, -(cellMobile.centerB.imageView.width), 0, (cellMobile.centerB.imageView.width));
                 cellMobile.centerB.imageEdgeInsets = UIEdgeInsetsMake(0, (cellMobile.centerB.titleLabel.width)+8, 0, -(cellMobile.centerB.titleLabel.width));
                 cellMobile.RightField.keyboardType = UIKeyboardTypeNumberPad;
                 cellMobile.LeftTitle.text = titlearr[indexPath.row];
+                cellMobile.RightField.userInteractionEnabled = NO;
+                UIImageView *accessoryImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_nextDown"]];
+                cellMobile.accessoryView = accessoryImgView;
                 return cellMobile;
-            }else if(indexPath.row==2)
+            }
+            /*else if(indexPath.row==2)
             {
                 UIImageView *accessoryImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_nextDown"]];
                 cell.accessoryView = accessoryImgView;
-            }
+            }*/
         }
+        if(indexPath.section==1)
+        {
         if(indexPath.row==0 || indexPath.row==5)
         {
             if(indexPath.row==0)
@@ -405,11 +417,13 @@
                 cellName.delegate = self;
                 cellName.selectionStyle = UITableViewCellSelectionStyleNone;
             cellName.LeftTitle.text = titlearr[indexPath.row];
+                [cellName.phoneImage setImage:[UIImage imageNamed:@"icon_tongxunlu"] forState:(UIControlStateNormal)];
                 if(indexPath.section==2)
                 { if(self.addressSender!=nil)
                  {
                     cellName.RightField.text = self.addressSender.addressFullName;
                  }
+                
                 }else if(indexPath.section==3)
                 { if(self.addressReceiver!=nil)
                 {
@@ -440,7 +454,63 @@
                 cell.RightField.keyboardType = UIKeyboardTypeNumberPad;
             }
         }
-    }else if(indexPath.section==4)
+        }else if (indexPath.section==2)
+        {
+            if(indexPath.row==0 || indexPath.row==6)
+            {
+                if(indexPath.row==0)
+                {
+                LetterNameTableViewCell *cellName = (LetterNameTableViewCell *)[tableView dequeueReusableCellWithIdentifier:TableNameID];
+                if (cellName == nil) {
+                    cellName= (LetterNameTableViewCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"LetterNameTableViewCell" owner:self options:nil]  lastObject];
+                }
+                    UIView *lbl = [[UIView alloc] init]; //定义一个label用于显示cell之间的分割线（未使用系统自带的分割线），也可以用view来画分割线
+                    lbl.frame = CGRectMake(16 , 0, cellName.width-16*2, 1);
+                    lbl.backgroundColor =  [UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1];
+                    [cellName.contentView addSubview:lbl];
+                    cellName.tag = [[NSString stringWithFormat:@"400%ld%ld",indexPath.section,indexPath.row] integerValue];
+                    cellName.delegate = self;
+                    cellName.selectionStyle = UITableViewCellSelectionStyleNone;
+                cellName.LeftTitle.text = titlearr[indexPath.row];
+                    [cellName.phoneImage setImage:[UIImage imageNamed:@"icon_tongxunlu"] forState:(UIControlStateNormal)];
+                    if(indexPath.section==2)
+                    { if(self.addressSender!=nil)
+                     {
+                        cellName.RightField.text = self.addressSender.addressFullName;
+                     }
+                    
+                    }else if(indexPath.section==3)
+                    { if(self.addressReceiver!=nil)
+                    {
+                        cellName.RightField.text = self.addressReceiver.addressFullName;
+                    }
+                    }
+                    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.07/*延迟执行时间*/ * NSEC_PER_SEC));
+                    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+                    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:cellName.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(20, 20)];
+                    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+                    maskLayer.frame = cellName.bounds;
+                    maskLayer.path = maskPath.CGPath;
+                    cellName.layer.mask = maskLayer;
+                    });
+                NSLog(@"indexPath.row2222=== %ld",(long)indexPath.row);
+                return cellName;
+                }else if(indexPath.row==6)
+                {
+                    NSLog(@"indexPath.row111=== %ld",(long)indexPath.row);
+                    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.07/*延迟执行时间*/ * NSEC_PER_SEC));
+                    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+                        UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:cell.bounds byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight cornerRadii:CGSizeMake(20, 20)];
+                        CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+                        maskLayer.frame = cell.bounds;
+                        maskLayer.path = maskPath.CGPath;
+                        cell.layer.mask = maskLayer;
+                    });
+                    cell.RightField.keyboardType = UIKeyboardTypeNumberPad;
+                }
+            }
+        }
+    }else if(indexPath.section==3)
     {
         UITableViewCell *cell1 = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
         if (cell1 == nil)
@@ -459,14 +529,47 @@
         return cell1;
     }else
     {
-        if(indexPath.section == 1){
-//            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; //显示最右边的箭头
-            UIImageView *accessoryImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_next"]];
-            cell.accessoryView = accessoryImgView;
-            cell.RightField.userInteractionEnabled=NO;
-            cell.RightField.text = self.PostType;
+//        if(indexPath.section == 1){
+////            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; //显示最右边的箭头
+//            UIImageView *accessoryImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_next"]];
+//            cell.accessoryView = accessoryImgView;
+//            cell.RightField.userInteractionEnabled=NO;
+//            cell.RightField.text = self.PostType;
+//        }else
+            if (indexPath.section == 0)
+        {
+            LetterNameTableViewCell *cellZ = (LetterNameTableViewCell *)[tableView dequeueReusableCellWithIdentifier:TableNameID];
+            if (cellZ == nil) {
+                cellZ= (LetterNameTableViewCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"LetterNameTableViewCell" owner:self options:nil]  lastObject];
+            }
+                UIView *lbl = [[UIView alloc] init]; //定义一个label用于显示cell之间的分割线（未使用系统自带的分割线），也可以用view来画分割线
+                lbl.frame = CGRectMake(16 , 0, cellZ.width-16*2, 1);
+                lbl.backgroundColor =  [UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1];
+                [cellZ.contentView addSubview:lbl];
+//                cellZ.tag = [[NSString stringWithFormat:@"400%ld%ld",indexPath.section,indexPath.row] integerValue];
+            cellZ.tag = [[NSString stringWithFormat:@"300%ld%ld",indexPath.section,indexPath.row] integerValue];
+            cellZ.contentView.tag = [[NSString stringWithFormat:@"300%ld%ld",indexPath.section,indexPath.row] integerValue];
+                cellZ.delegate = self;
+                cellZ.selectionStyle = UITableViewCellSelectionStyleNone;
+            cellZ.LeftTitle.text = titlearr[indexPath.row];
+            cellZ.RightField.userInteractionEnabled=NO;
+            [cellZ.phoneImage setImage:[UIImage imageNamed:@"icon_scan11"] forState:(UIControlStateNormal)];
+                if(self.ItemNumber!=nil)
+                 {
+                    cellZ.RightField.text = self.ItemNumber;
+                 }
+                dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.07/*延迟执行时间*/ * NSEC_PER_SEC));
+                dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+                UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:cellZ.bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(20, 20)];
+                CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+                maskLayer.frame = cellZ.bounds;
+                maskLayer.path = maskPath.CGPath;
+                cellZ.layer.mask = maskLayer;
+                });
+            NSLog(@"cellZ.row2222=== %ld",(long)indexPath.row);
+            return cellZ;
         }
-        if(indexPath.section == 0 || indexPath.section == 1 || indexPath.section == 4)
+        if(indexPath.section == 0 || indexPath.section == 3)
         {
             if(indexPath.section == 0)
             {
@@ -475,6 +578,7 @@
             }
             cell.layer.cornerRadius = 20;
         }
+        
     }
     return cell;
 }
@@ -499,7 +603,7 @@
     view_c.backgroundColor=[UIColor colorWithRed:241/255.0 green:241/255.0 blue:241/255.0 alpha:1.0];
     //    view_c.backgroundColor=[UIColor whiteColor];
     UILabel * lab = [[UILabel alloc] init];
-    if(section<4)
+    if(section<3)
     {
         lab.text = HeaderArr[section];
     }
@@ -522,7 +626,11 @@
     //        CollViewController *Avc=[main instantiateViewControllerWithIdentifier:@"CollViewController"];
     //        Avc.hidesBottomBarWhenPushed = YES;
     //        [self.navigationController pushViewController:Avc animated:YES];
-    if(indexPath.section==1)
+    if(indexPath.section == 0)
+    {
+            PostSGQViewController * Avc = [[PostSGQViewController alloc] init];
+            [self.navigationController pushViewController:Avc animated:YES];
+    }else if(indexPath.section==1)
     {
         NSMutableArray * arrType = [NSMutableArray arrayWithCapacity:0];
         [arrType addObject:@"LETTER"];
@@ -539,9 +647,20 @@
         [self addLZPickerView:self.CountryArr ViewTag:[[NSString stringWithFormat:@"200%ld%ld",indexPath.section,indexPath.row] integerValue]];
         }
        
+    }else if(indexPath.section==2 && indexPath.row==1)
+    {
+       UIStoryboard *main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+       CityListViewController *Avc=[main instantiateViewControllerWithIdentifier:@"CityListViewController"];
+       Avc.hidesBottomBarWhenPushed = YES;
+        Avc.delegate=self;
+       [self.navigationController pushViewController:Avc animated:YES];
     }
 }
-
+-(void)selectCity:(NSString *)cityStr
+{
+    self.addressReceiver.country = cityStr;
+    [self.TableView reloadData];
+}
 #pragma mark ----------
 -(void)push_btnTouch:(NSInteger)tag
 {
@@ -627,20 +746,26 @@
 }
 -(void)AddressInfo:(NSInteger)tag
 {
+    if(tag==30000)
+    {
+        PostSGQViewController * Avc = [[PostSGQViewController alloc] init];
+        [self.navigationController pushViewController:Avc animated:YES];
+    }else{
     UIStoryboard *main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
     AddressInfoViewController *Avc=[main instantiateViewControllerWithIdentifier:@"AddressInfoViewController"];
     Avc.hidesBottomBarWhenPushed = YES;
     Avc.delegate = self;
     Avc.tagS = tag;
     [self.navigationController pushViewController:Avc animated:YES];
+    }
 }
 -(void)returnAddressStr:(AddressListMode * )AddressStr tagS:(NSInteger)Tag
 {
     NSLog(@"tag====   %ld", Tag);
-    if(Tag == 40020)
+    if(Tag == 40010)
     {
         self.addressSender = [self setModeValue:AddressStr];
-    }else if(Tag == 40030)
+    }else if(Tag == 40020)
     {
         self.addressReceiver = [self setModeValue:AddressStr];
     }
@@ -673,6 +798,7 @@
     NSIndexPath * indexPath = [NSIndexPath indexPathForRow:[str3 integerValue] inSection:[str2 integerValue]];
     if(tag==20021 || tag==20031)
     {
+        /*
     LetterMobileTableViewCell * cell = (LetterMobileTableViewCell*)[TableView cellForRowAtIndexPath:indexPath];/////找到要修改的cell
     NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"LZPickerView" owner:nil options:nil];
     LZPickerView * lzPickerVIew  = views[0];
@@ -692,6 +818,7 @@
         }
     };
     [lzPickerVIew show];
+        */
     }else if(tag==20022 || tag==20032)
     {
         TextTableViewCell * cell = (TextTableViewCell*)[TableView cellForRowAtIndexPath:indexPath];/////找到要修改的cell

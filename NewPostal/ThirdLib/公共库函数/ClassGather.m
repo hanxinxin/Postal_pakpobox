@@ -43,3 +43,6 @@
 
 @end
 
+@implementation countriesClass
+
+@end

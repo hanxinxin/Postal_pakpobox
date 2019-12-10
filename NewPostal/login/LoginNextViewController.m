@@ -24,7 +24,7 @@
 //    self.navigationController.navigationBar.translucent = NO;
 //    self.navigationController.navigationBar.translucent = NO;
     [self.navigationController setNavigationBarHidden:YES animated:NO];
-    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+//    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     self.NameField.layer.borderColor = [UIColor colorWithRed:152/255.0 green:169/255.0 blue:179/255.0 alpha:1.0].CGColor;
     self.NameField.layer.borderWidth = 1;
     self.NameField.layer.cornerRadius = 20;
@@ -70,7 +70,14 @@
 //    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor blackColor]}];
 //    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];;
     [self.navigationController.navigationBar setHidden:YES];
+//    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+
 //    self.navigationController.navigationBar.subviews[0].subviews[0].hidden = YES;
+    if (@available(iOS 13.0, *)) {
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDarkContent;
+    } else {
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    }
     NSString * phoneN = [[NSUserDefaults standardUserDefaults] objectForKey:@"phoneNumber"];
     NSString * TouchIDStr = [[NSUserDefaults standardUserDefaults] objectForKey:@"TouchID"];
         if(![phoneN isEqualToString:@"1"] && ![TouchIDStr isEqualToString:@"1"])

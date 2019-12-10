@@ -25,7 +25,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithRed:241/255.0 green:241/255.0 blue:241/255.0 alpha:1.0];
     arrListTitle=[NSMutableArray arrayWithCapacity:0];
-    
+    self.AddNewBtn.hidden=YES;
     [self tableviewSet];
 }
 - (void)viewWillAppear:(BOOL)animated {
@@ -33,6 +33,12 @@
     self.title=FGGetStringWithKeyFromTable(@"Detail Info", @"Language");
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor blackColor]}];
     [self getAddressListInfo];
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setTitle:@"" forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:@"icon_zengjia"] forState:(UIControlStateNormal)];
+    [btn addTarget:self action:@selector(rightTouch:) forControlEvents:UIControlEventTouchDown];
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    self.navigationItem.rightBarButtonItem = rightBtn;
     [super viewWillAppear:animated];
     
 }
@@ -44,7 +50,14 @@
     self.navigationItem.backBarButtonItem = backBtn;
     [super viewWillDisappear:animated];
 }
-
+-(void)rightTouch:(id)sender
+{
+    UIStoryboard *main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    AddressDetailViewController *Avc=[main instantiateViewControllerWithIdentifier:@"AddressDetailViewController"];
+    Avc.GXFlag = 0;
+    Avc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:Avc animated:YES];
+}
 
 -(void)getAddressListInfo
 {

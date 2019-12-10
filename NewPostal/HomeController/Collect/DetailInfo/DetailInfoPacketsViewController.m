@@ -11,11 +11,16 @@
 #import "LPTableViewCell.h"
 #import "QRTableViewCell.h"
 #import "WCQRCodeScanningVC.h"
+#import "ZDYQRCodeScanningVC.h"
+#import "LettersNewTableViewCell.h"
+#import "CellViewDown.h"
+#import "PLXQTableViewCell.h"
 
 #define tableID1 @"SingTableViewCell"
 #define tableID2 @"LPTableViewCell"
 #define tableID3 @"QRTableViewCell"
-
+#define TableIDNew @"LettersNewTableViewCell"
+#define TableIDDown @"PLXQTableViewCell"
 @interface DetailInfoPacketsViewController ()<UITableViewDelegate,UITableViewDataSource,QRTableViewCellDelegate>
 
 @end
@@ -35,6 +40,35 @@
     });
     
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    UIButton * rightB = [[UIButton alloc] init];
+    rightB.frame = CGRectMake(SCREEN_WIDTH-60, 25, 40, 40);
+    //    [back setImage:[UIImage imageNamed:@"popup_close"] forState:(UIControlStateNormal)];
+    [rightB setImage:[UIImage imageNamed:@"icon_scan_ad"] forState:(UIControlStateNormal)];
+    [rightB addTarget:self action:@selector(selectRightBtnAction:) forControlEvents:(UIControlEventTouchUpInside)];
+        UIBarButtonItem *RightBtn = [[UIBarButtonItem alloc] initWithCustomView:rightB];;
+        self.navigationItem.rightBarButtonItem = RightBtn;
+    [super viewWillAppear:animated];
+   
+}
+-(void)selectRightBtnAction:(id)sender
+{
+    ZDYQRCodeScanningVC * vc = [[ZDYQRCodeScanningVC alloc] init];
+    //    [self.navigationController pushViewController:vc animated:YES];
+    vc.tag_int = 2;
+    vc.ordersId = _modeA.lockerId;
+//    [self presentViewController:vc animated:YES completion:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] init];
+    //    [backBtn setTintColor:[UIColor blackColor]];
+    backBtn.title = FGGetStringWithKeyFromTable(@"", @"Language");
+    self.navigationItem.backBarButtonItem = backBtn;
+
+    [super viewWillDisappear:animated];
 }
 
 -(void)addTableViewOrders
@@ -122,23 +156,35 @@
 }
 -(void)push_btnTouch:(NSInteger)tag
 {
-    WCQRCodeScanningVC * vc = [[WCQRCodeScanningVC alloc] init];
-    //    [self.navigationController pushViewController:vc animated:YES];
-    vc.tag_int = 2;
-    vc.ordersId = _modeA.lockerId;
-    [self presentViewController:vc animated:YES completion:nil];
+//    WCQRCodeScanningVC * vc = [[WCQRCodeScanningVC alloc] init];
+//    //    [self.navigationController pushViewController:vc animated:YES];
+//    vc.tag_int = 2;
+//    vc.ordersId = _modeA.lockerId;
+//    [self presentViewController:vc animated:YES completion:nil];
+        ZDYQRCodeScanningVC * vc = [[ZDYQRCodeScanningVC alloc] init];
+        //    [self.navigationController pushViewController:vc animated:YES];
+        vc.tag_int = 2;
+        vc.ordersId = _modeA.lockerId;
+//        [self presentViewController:vc animated:YES completion:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 
 #pragma mark -------- Tableview -------
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
+    if(section==1)
+    {
+//        return ([_modeA.letterCount intValue]-1);
+        return 2;
+    }
     return 1;
 }
 //4、设置组数
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 2;
 }
+/*
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section==0)
@@ -196,6 +242,104 @@
     
     return nil;
 }
+ */
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.section==0)
+    {
+     QRTableViewCell *cell = (QRTableViewCell *)[tableView dequeueReusableCellWithIdentifier:tableID3];
+     if (cell == nil) {
+         cell= (QRTableViewCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"QRTableViewCell" owner:self options:nil]  lastObject];
+     }
+     //    NSLog(@"%ld",indexPath.section);
+     UIView *lbl = [[UIView alloc] init]; //定义一个label用于显示cell之间的分割线（未使用系统自带的分割线），也可以用view来画分割线
+     lbl.frame = CGRectMake(cell.frame.origin.x + 10, 0, self.view.width-1, 1);
+     lbl.backgroundColor =  [UIColor clearColor];
+     [cell.contentView addSubview:lbl];
+     cell.delegate=self;
+     //cell选中效果
+     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+     cell.layer.cornerRadius = 20;
+     cell.PCodeLabel.text =_modeA.pinCode;
+     cell.QRImage.image = [self loadQRCodeImg:_modeA.pinCode];
+     cell.ClickBtn.layer.cornerRadius = 25;
+        cell.ClickBtn.hidden=YES;
+            return cell;
+        }else if(indexPath.section==1)
+        {
+            if(indexPath.row==0)
+            {
+         LettersNewTableViewCell *cell = (LettersNewTableViewCell *)[tableView dequeueReusableCellWithIdentifier:TableIDNew];
+                if (cell == nil) {
+                    cell= (LettersNewTableViewCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"LettersNewTableViewCell" owner:self options:nil]  lastObject];
+                }
+                //    NSLog(@"%ld",indexPath.section);
+                UIView *lbl = [[UIView alloc] init]; //定义一个label用于显示cell之间的分割线（未使用系统自带的分割线），也可以用view来画分割线
+                lbl.frame = CGRectMake(cell.frame.origin.x + 10, 0, self.view.width-1, 1);
+                lbl.backgroundColor =  [UIColor clearColor];
+                [cell.contentView addSubview:lbl];
+                //cell选中效果
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            //    cell.layer.cornerRadius = 20;
+            //    cell.CoutTitle.layer.cornerRadius = 20;
+            //    [UIBezierPathView setCornerOnLeft:4 view_b:cell.CoutTitle];
+                cell.ItemsCoutLabel.text = [_modeA.letterCount stringValue];
+                dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.09/*延迟执行时间*/ * NSEC_PER_SEC));
+                dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+                UIBezierPath *maskPath;
+            //    maskPath = [UIBezierPath bezierPathWithRoundedRect:cell.bounds byRoundingCorners:(UIRectCornerTopRight | UIRectCornerBottomLeft) cornerRadii:CGSizeMake(19, 30)];
+                    maskPath = [UIBezierPath bezierPathWithRoundedRect:cell.bounds byRoundingCorners:(UIRectCornerTopRight|UIRectCornerTopLeft) cornerRadii:CGSizeMake(19, 30)];
+                CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+                maskLayer.frame = cell.bounds;
+                maskLayer.path = maskPath.CGPath;
+                cell.layer.mask = maskLayer;
+                   
+                });
+                
+                    return cell;
+                }else
+                {
+                    /*
+                    PLXQTableViewCell *cell = (PLXQTableViewCell *)[tableView dequeueReusableCellWithIdentifier:TableIDDown];
+                    if (cell == nil) {
+                        cell= (PLXQTableViewCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"PLXQTableViewCell" owner:self options:nil]  lastObject];
+                    }
+                     */
+                    // 定义cell标识  每个cell对应一个自己的标识
+                    NSString *CellIdentifier = [NSString stringWithFormat:@"cell%ld%ld",(long)indexPath.section,(long)indexPath.row];
+                    [self.ZtableView registerNib:[UINib nibWithNibName:@"PLXQTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:CellIdentifier];
+                     // 通过不同标识创建cell实例
+                    PLXQTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    // 判断为空进行初始化  --（当拉动页面显示超过主页面内容的时候就会重用之前的cell，而不会再次初始化）
+                    if (!cell) {
+                        cell= (PLXQTableViewCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"PLXQTableViewCell" owner:self options:nil]  lastObject];
+                    }
+                    //    NSLog(@"%ld",indexPath.section);
+                    UIView *lbl = [[UIView alloc] init]; //定义一个label用于显示cell之间的分割线（未使用系统自带的分割线），也可以用view来画分割线
+                    lbl.frame = CGRectMake(cell.frame.origin.x + 10, 0, self.view.width-1, 1);
+                    lbl.backgroundColor =  [UIColor clearColor];
+                    [cell.contentView addSubview:lbl];
+                    //cell选中效果
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.09/*延迟执行时间*/ * NSEC_PER_SEC));
+                        dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+//                            packetsMode * mode = self.PacketsArrList[indexPath.section];
+//                            if(indexPath.row==([self->_modeA.letterCount intValue]-2))
+//                            {
+                        UIBezierPath *maskPath;
+                        maskPath = [UIBezierPath bezierPathWithRoundedRect:cell.bounds byRoundingCorners:(UIRectCornerBottomLeft|UIRectCornerBottomRight) cornerRadii:CGSizeMake(19, 30)];
+                        CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+                        maskLayer.frame = cell.bounds;
+                        maskLayer.path = maskPath.CGPath;
+                        cell.layer.mask = maskLayer;
+//                          }
+                        });
+                       
+                    return cell;
+                }
+        }
+    return nil;
+}
 
 //设置间隔高度
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -219,14 +363,18 @@
 }
 //行高
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.section==1)
+    if(indexPath.section==0)
     {
-        return 70;
-    }else if(indexPath.section==2)
+        return 260;
+    }else if(indexPath.section==1 && indexPath.row==0)
     {
-        return 330;
+        
+        return 150;
+    }else
+    {
+        return 60;
     }
-    return 107;
+    return 0;
 }
 //选中时 调用的方法
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -236,7 +384,12 @@
     //        OrdersUnpaidViewController *vc=[main instantiateViewControllerWithIdentifier:@"OrdersUnpaidViewController"];
     //        vc.hidesBottomBarWhenPushed = YES;
     //        [self.navigationController pushViewController:vc animated:YES];
-    
+//    ZDYQRCodeScanningVC * vc = [[ZDYQRCodeScanningVC alloc] init];
+//    //    [self.navigationController pushViewController:vc animated:YES];
+//    vc.tag_int = 2;
+//    vc.ordersId = _modeA.lockerId;
+////    [self presentViewController:vc animated:YES completion:nil];
+//     [self.navigationController pushViewController:vc animated:YES];
 }
 
 

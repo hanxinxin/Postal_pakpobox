@@ -69,6 +69,7 @@
 //    }
     self.ZtableView.hidden=NO;
     self.ZtableView.frame=CGRectMake(14, 0, SCREEN_WIDTH-28, SCREEN_HEIGHT-(self.navigationController.navigationBar.bottom)-(44+8));
+//     self.ZtableView.frame=CGRectMake(14, 0, SCREEN_WIDTH-28,SCREEN_HEIGHT-64-200);
     //    self.tableViewTop.frame=self.view.frame;
     self.ZtableView.delegate=self;
     self.ZtableView.dataSource=self;

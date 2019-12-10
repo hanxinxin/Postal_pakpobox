@@ -45,7 +45,9 @@
     DCNavTabBarController *tabBarVC = [[DCNavTabBarController alloc]initWithSubViewControllers:subViewControllers];
 //    tabBarVC.view.frame = CGRectMake(0, self.navigationController.navigationBar.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-(self.navigationController.navigationBar.bottom));
     tabBarVC.delegate=self;
-    tabBarVC.view.frame = CGRectMake(0, -5, SCREEN_WIDTH, SCREEN_HEIGHT-(self.navigationController.navigationBar.bottom));
+//    tabBarVC.view.frame = CGRectMake(0, -5, SCREEN_WIDTH, SCREEN_HEIGHT-(self.navigationController.navigationBar.bottom));
+    tabBarVC.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    
     
     [self.view addSubview:tabBarVC.view];
     [self addChildViewController:tabBarVC];

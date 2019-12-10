@@ -10,9 +10,14 @@
 #import "PacketsTableViewCell.h"
 #import "DetailInfoPacketsViewController.h"
 #import "UIBezierPathView.h"
+#import "LettersNewTableViewCell.h"
+#import "CellViewDown.h"
+#import "PLXQTableViewCell.h"
+#import "ZDYQRCodeScanningVC.h"
 
 #define tableID @"PacketsTableViewCell"
-
+#define TableIDNew @"LettersNewTableViewCell"
+#define TableIDDown @"PLXQTableViewCell"
 
 @interface PacketsViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)NSMutableArray * PacketsArrList;
@@ -65,8 +70,9 @@
 //    }else{
 //        self.ZtableView.frame=CGRectMake(15, 64+10, SCREEN_WIDTH-15*2,SCREEN_HEIGHT-64-10);
 //    }
+    NSLog(@"ADDDDD ===%f.MMM= %f",SCREEN_HEIGHT-((kNavBarAndStatusBarHeight)+(44+8)),((kNavBarAndStatusBarHeight)+(44+8)));
     self.ZtableView.hidden=NO;
-    self.ZtableView.frame=CGRectMake(14, 0, SCREEN_WIDTH-28, SCREEN_HEIGHT-(self.navigationController.navigationBar.bottom)-(44+8));
+    self.ZtableView.frame=CGRectMake(14, 0, SCREEN_WIDTH-28, SCREEN_HEIGHT-((kNavBarAndStatusBarHeight)+(44+8)));
     //    self.tableViewTop.frame=self.view.frame;
     self.ZtableView.delegate=self;
     self.ZtableView.dataSource=self;
@@ -76,7 +82,9 @@
     self.ZtableView.backgroundColor = [UIColor colorWithRed:237/255.0 green:240/255.0 blue:241/255.0 alpha:1];
     //    self.tableViewTop.backgroundColor = [UIColor redColor];
     [self.view addSubview:self.ZtableView];
-    [self.ZtableView registerNib:[UINib nibWithNibName:@"PacketsTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:tableID];
+//    [self.ZtableView registerNib:[UINib nibWithNibName:@"PacketsTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:tableID];
+    [self.ZtableView registerNib:[UINib nibWithNibName:@"LettersNewTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:TableIDNew];
+//    [self.ZtableView registerNib:[UINib nibWithNibName:@"PLXQTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:TableIDDown];
     
     // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
     MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
@@ -173,15 +181,19 @@
 
 #pragma mark -------- Tableview -------
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    return 1;
+//    packetsMode * mode = self.PacketsArrList[section];
+//    return ([mode.letterCount intValue]);
+    return 3;
 }
 //4、设置组数
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return self.PacketsArrList.count;
+    
 }
+/*
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     PacketsTableViewCell *cell = (PacketsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:tableID];
     if (cell == nil) {
         cell= (PacketsTableViewCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"PacketsTableViewCell" owner:self options:nil]  lastObject];
@@ -209,6 +221,136 @@
 //    cell.locationText.text = mode.location;
     [self settitleFont:cell.locationText titleText:mode.location];
     return cell;
+}
+ */
+
+
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.row==0 && indexPath.section==0)
+    {
+    LettersNewTableViewCell *cell = (LettersNewTableViewCell *)[tableView dequeueReusableCellWithIdentifier:TableIDNew];
+    if (cell == nil) {
+        cell= (LettersNewTableViewCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"LettersNewTableViewCell" owner:self options:nil]  lastObject];
+    }
+    //    NSLog(@"%ld",indexPath.section);
+    UIView *lbl = [[UIView alloc] init]; //定义一个label用于显示cell之间的分割线（未使用系统自带的分割线），也可以用view来画分割线
+    lbl.frame = CGRectMake(cell.frame.origin.x + 10, 0, self.view.width-1, 1);
+    lbl.backgroundColor =  [UIColor clearColor];
+    [cell.contentView addSubview:lbl];
+    //cell选中效果
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    cell.layer.cornerRadius = 20;
+//    cell.CoutTitle.layer.cornerRadius = 20;
+//    [UIBezierPathView setCornerOnLeft:4 view_b:cell.CoutTitle];
+    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.09/*延迟执行时间*/ * NSEC_PER_SEC));
+    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+    UIBezierPath *maskPath;
+//    maskPath = [UIBezierPath bezierPathWithRoundedRect:cell.bounds byRoundingCorners:(UIRectCornerTopRight | UIRectCornerBottomLeft) cornerRadii:CGSizeMake(19, 30)];
+        maskPath = [UIBezierPath bezierPathWithRoundedRect:cell.bounds byRoundingCorners:(UIRectCornerTopRight|UIRectCornerTopLeft) cornerRadii:CGSizeMake(19, 30)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = cell.bounds;
+    maskLayer.path = maskPath.CGPath;
+    cell.layer.mask = maskLayer;
+       
+    });
+    packetsMode * mode = self.PacketsArrList[indexPath.section];
+    cell.ItemsCoutLabel.text = [mode.letterCount stringValue];
+//    dispatch_time_t delayTime1 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5/*延迟执行时间*/ * NSEC_PER_SEC));
+//
+//    dispatch_after(delayTime1, dispatch_get_main_queue(), ^{
+//    [self AddCellViewDown:mode.letterCount Cell:cell];
+//    });
+        return cell;
+    }else
+    {
+        /*
+        PLXQTableViewCell *cell = (PLXQTableViewCell *)[tableView dequeueReusableCellWithIdentifier:TableIDDown];
+        if (cell == nil) {
+            cell= (PLXQTableViewCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"PLXQTableViewCell" owner:self options:nil]  lastObject];
+        }
+         */
+         
+        if(indexPath.row==2){
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
+            if (cell == nil)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellID11"];
+            }
+            //cell选中效果
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            //    NSLog(@"%ld",indexPath.section);
+          UIButton * Collect = [[UIButton alloc] init];
+//            UILabel * Collect = [[UILabel alloc] init];
+            Collect.frame = CGRectMake(10, 5, cell.width-20, 50);
+            Collect.backgroundColor = [UIColor colorWithRed:8/255.0 green:79/255.0 blue:171/255.0 alpha:1.0];;
+//
+//            Collect.textColor = [UIColor whiteColor];
+//            Collect.text = @"COLLECT";
+//            [Collect setFont:[UIFont systemFontOfSize:20.f]];
+//            Collect.textAlignment = NSTextAlignmentCenter;
+            [Collect setTintColor:[UIColor whiteColor]];
+            [Collect setTitle:@"COLLECT" forState:(UIControlStateNormal)];
+            Collect.layer.cornerRadius = 25;
+            //                            [Collect addTarget:self action:@selector(CollectTouch:) forControlEvents:(UIControlEventTouchUpInside)];
+            Collect.userInteractionEnabled=NO;
+            [cell addSubview:Collect];
+            //cell选中效果
+//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.09/*延迟执行时间*/ * NSEC_PER_SEC));
+            dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+                Collect.frame = CGRectMake(10, 5, cell.width-20, 50);
+                
+            UIBezierPath *maskPath;
+            maskPath = [UIBezierPath bezierPathWithRoundedRect:cell.bounds byRoundingCorners:(UIRectCornerBottomLeft|UIRectCornerBottomRight) cornerRadii:CGSizeMake(19, 30)];
+            CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+            maskLayer.frame = cell.bounds;
+            maskLayer.path = maskPath.CGPath;
+            cell.layer.mask = maskLayer;
+            });
+            return cell;
+        }else{
+        
+        // 定义cell标识  每个cell对应一个自己的标识
+         NSString *CellIdentifier = [NSString stringWithFormat:@"cell%ld%ld",indexPath.section,indexPath.row];
+        [self.ZtableView registerNib:[UINib nibWithNibName:@"PLXQTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:CellIdentifier];
+         // 通过不同标识创建cell实例
+        PLXQTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        // 判断为空进行初始化  --（当拉动页面显示超过主页面内容的时候就会重用之前的cell，而不会再次初始化）
+        if (!cell) {
+            cell= (PLXQTableViewCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"PLXQTableViewCell" owner:self options:nil]  lastObject];
+        }
+        //    NSLog(@"%ld",indexPath.section);
+        UIView *lbl = [[UIView alloc] init]; //定义一个label用于显示cell之间的分割线（未使用系统自带的分割线），也可以用view来画分割线
+        lbl.frame = CGRectMake(cell.frame.origin.x + 10, 0, self.view.width-1, 1);
+        lbl.backgroundColor =  [UIColor clearColor];
+        [cell.contentView addSubview:lbl];
+        //cell选中效果
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.09/*延迟执行时间*/ * NSEC_PER_SEC));
+//            dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+//
+//                if(indexPath.row==([mode.letterCount intValue]-2))
+//                {
+//            UIBezierPath *maskPath;
+//            maskPath = [UIBezierPath bezierPathWithRoundedRect:cell.bounds byRoundingCorners:(UIRectCornerBottomLeft|UIRectCornerBottomRight) cornerRadii:CGSizeMake(19, 30)];
+//            CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+//            maskLayer.frame = cell.bounds;
+//            maskLayer.path = maskPath.CGPath;
+//            cell.layer.mask = maskLayer;
+//              }
+//            });
+           
+        return cell;
+        }
+    }
+    
+    return nil;
+}
+-(void)CollectTouch:(id)sender
+{
+    NSLog(@"AINIAFNFNDJNFJDSNFJNFDJS");
 }
 -(void)settitleFont:(UILabel*)label titleText:(NSString *)text
 {
@@ -267,18 +409,39 @@
 //行高
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 90;
+    if(indexPath.row==0)
+    {
+        return 150;
+    }else
+    {
+    
+        return 60;
+    }
+//    packetsMode * mode = self.PacketsArrList[indexPath.section];
+//    return 170+(60*([mode.letterCount doubleValue]-1));
+    return 0;
 }
 //选中时 调用的方法
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"点击 = %ld",indexPath.section);
-    UIStoryboard *main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    DetailInfoPacketsViewController *vc=[main instantiateViewControllerWithIdentifier:@"DetailInfoPacketsViewController"];
-    vc.hidesBottomBarWhenPushed = YES;
+    NSLog(@"点击 = %ld   indexPath.row= %ld",indexPath.section,indexPath.row);
+//    if(indexPath.section==0)
     packetsMode * mode = self.PacketsArrList[indexPath.section];
-    vc.modeA = mode;
-    [self.navigationController pushViewController:vc animated:YES];
+    if(indexPath.row==([mode.letterCount intValue]-1))
+    {
+        ZDYQRCodeScanningVC * vc = [[ZDYQRCodeScanningVC alloc] init];
+        vc.tag_int = 2;
+        vc.ordersId = mode.lockerId;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else
+    {
+        UIStoryboard *main=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            DetailInfoPacketsViewController *vc=[main instantiateViewControllerWithIdentifier:@"DetailInfoPacketsViewController"];
+            vc.hidesBottomBarWhenPushed = YES;
+        //    packetsMode * mode = self.PacketsArrList[indexPath.section];
+            vc.modeA = mode;
+            [self.navigationController pushViewController:vc animated:YES];
+    }
 
 }
 
